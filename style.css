@@ -61,6 +61,17 @@ main {
     align-items: start;
 }
 
+/* Desktop grid placement (DOM order is preview-first for mobile) */
+.preview {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.controls {
+    grid-column: 1;
+    grid-row: 1;
+}
+
 /* Mobile settings toggle - hidden on desktop */
 .settings-toggle {
     display: none;
@@ -443,12 +454,14 @@ select option {
 
     main {
         display: flex;
-        flex-direction: column-reverse;
+        flex-direction: column;
         gap: 0;
     }
 
-    /* Preview comes first (flex column-reverse puts it on top) */
+    /* Preview is first in DOM, shown at top on mobile */
     .preview {
+        grid-column: auto;
+        grid-row: auto;
         padding: 12px;
         border-radius: 12px 12px 0 0;
         box-shadow: none;
@@ -492,10 +505,12 @@ select option {
         transition: transform 0.3s ease;
         padding: 20px 16px calc(env(safe-area-inset-bottom, 0px) + 16px);
         -webkit-overflow-scrolling: touch;
+        pointer-events: none;
     }
 
     .controls.open {
         transform: translateY(0);
+        pointer-events: auto;
     }
 
     /* Drawer handle indicator */

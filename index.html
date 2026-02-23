@@ -16,6 +16,26 @@
         </header>
 
         <main>
+            <div class="preview">
+                <div class="preview-container" id="preview-container">
+                    <div class="loading" id="loading" data-i18n="generating">Generating...</div>
+                    <div id="svg-container"></div>
+                    <button class="fs-close-btn" id="fs-close-btn" aria-label="Exit fullscreen">&times;</button>
+                </div>
+                <div class="seed-display">
+                    <span data-i18n="seed_label">Seed:</span> <span id="current-seed">-</span>
+                </div>
+            </div>
+
+            <!-- Mobile action buttons (sticky at bottom) -->
+            <div class="mobile-actions" id="mobile-actions">
+                <button id="mobile-random-btn" class="primary" data-i18n="btn_random">Random</button>
+                <button id="mobile-download-btn" data-i18n="btn_download">Download PNG</button>
+            </div>
+
+            <!-- Mobile settings toggle (visible only on mobile) -->
+            <button class="settings-toggle" id="settings-toggle" data-i18n="settings">Settings</button>
+
             <div class="controls">
                 <div class="control-group">
                     <label for="pattern-type" data-i18n="pattern_type">Pattern Type</label>
@@ -206,26 +226,6 @@
                     <button id="fullscreen-btn" class="fullscreen-btn" data-i18n="fullscreen">Fullscreen</button>
                 </div>
             </div>
-
-            <div class="preview">
-                <div class="preview-container" id="preview-container">
-                    <div class="loading" id="loading" data-i18n="generating">Generating...</div>
-                    <div id="svg-container"></div>
-                    <button class="fs-close-btn" id="fs-close-btn" aria-label="Exit fullscreen">&times;</button>
-                </div>
-                <div class="seed-display">
-                    <span data-i18n="seed_label">Seed:</span> <span id="current-seed">-</span>
-                </div>
-            </div>
-
-            <!-- Mobile action buttons (sticky at bottom) -->
-            <div class="mobile-actions" id="mobile-actions">
-                <button id="mobile-random-btn" class="primary" data-i18n="btn_random">Random</button>
-                <button id="mobile-download-btn" data-i18n="btn_download">Download PNG</button>
-            </div>
-
-            <!-- Mobile settings toggle (visible only on mobile) -->
-            <button class="settings-toggle" id="settings-toggle" data-i18n="settings">Settings</button>
         </main>
 
         <!-- Mobile controls backdrop -->
