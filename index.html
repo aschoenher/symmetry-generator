@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Geometric Pattern Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Geometric Pattern Generator</h1>
+            <p class="subtitle">Create mathematical symmetry patterns</p>
+        </header>
+
+        <main>
+            <div class="controls">
+                <div class="control-group">
+                    <label for="pattern-type">Pattern Type</label>
+                    <select id="pattern-type">
+                        <option value="rosette">Rosette</option>
+                        <option value="kaleidoscope">Kaleidoscope</option>
+                        <option value="wallpaper">Wallpaper</option>
+                        <option value="frieze">Frieze</option>
+                    </select>
+                </div>
+
+                <!-- Rosette Options -->
+                <div id="rosette-options" class="pattern-options">
+                    <div class="control-group">
+                        <label for="rosette-n">Rotational Order (n)</label>
+                        <input type="range" id="rosette-n" min="2" max="24" value="6">
+                        <span class="value-display" id="rosette-n-value">6</span>
+                    </div>
+                    <div class="control-group">
+                        <label for="rosette-symmetry">Symmetry Type</label>
+                        <select id="rosette-symmetry">
+                            <option value="Dn">Dn (rotation + reflection)</option>
+                            <option value="Cn">Cn (rotation only)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Kaleidoscope Options -->
+                <div id="kaleidoscope-options" class="pattern-options" style="display: none;">
+                    <div class="control-group">
+                        <label for="kaleidoscope-triangle">Triangle Type</label>
+                        <select id="kaleidoscope-triangle">
+                            <option value="*236">*236 (30-60-90)</option>
+                            <option value="*333">*333 (60-60-60)</option>
+                            <option value="*244">*244 (45-45-90)</option>
+                            <option value="*235">*235 (Icosahedral)</option>
+                            <option value="*234">*234 (Octahedral)</option>
+                            <option value="*237">*237 (Hyperbolic)</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <label for="kaleidoscope-iterations">Iterations</label>
+                        <input type="range" id="kaleidoscope-iterations" min="1" max="6" value="4">
+                        <span class="value-display" id="kaleidoscope-iterations-value">4</span>
+                    </div>
+                    <div class="control-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="kaleidoscope-animate">
+                            <span>3D Tunnel Effect</span>
+                        </label>
+                        <div class="interval-control" id="kaleidoscope-speed-control">
+                            <label>Speed</label>
+                            <input type="range" id="kaleidoscope-speed" min="1" max="10" value="3" step="0.5">
+                            <span class="value-display" id="kaleidoscope-speed-value">3</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wallpaper Options -->
+                <div id="wallpaper-options" class="pattern-options" style="display: none;">
+                    <div class="control-group">
+                        <label for="wallpaper-group">Wallpaper Group</label>
+                        <select id="wallpaper-group">
+                            <optgroup label="Hexagonal">
+                                <option value="p6m" selected>p6m</option>
+                                <option value="p6">p6</option>
+                                <option value="p3m1">p3m1</option>
+                                <option value="p31m">p31m</option>
+                                <option value="p3">p3</option>
+                            </optgroup>
+                            <optgroup label="Square">
+                                <option value="p4m">p4m</option>
+                                <option value="p4g">p4g</option>
+                                <option value="p4">p4</option>
+                            </optgroup>
+                            <optgroup label="Rectangular">
+                                <option value="pmm">pmm</option>
+                                <option value="pmg">pmg</option>
+                                <option value="pgg">pgg</option>
+                                <option value="cmm">cmm</option>
+                                <option value="pm">pm</option>
+                                <option value="pg">pg</option>
+                                <option value="cm">cm</option>
+                            </optgroup>
+                            <optgroup label="Oblique">
+                                <option value="p2">p2</option>
+                                <option value="p1">p1</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <label for="wallpaper-repeat">Repetitions</label>
+                        <input type="range" id="wallpaper-repeat" min="2" max="8" value="4">
+                        <span class="value-display" id="wallpaper-repeat-value">4x4</span>
+                    </div>
+                </div>
+
+                <!-- Frieze Options -->
+                <div id="frieze-options" class="pattern-options" style="display: none;">
+                    <div class="control-group">
+                        <label for="frieze-group">Frieze Group</label>
+                        <select id="frieze-group">
+                            <option value="p2mm">p2mm (spinning sidle)</option>
+                            <option value="p2mg">p2mg (spinning jump)</option>
+                            <option value="p2gg">p2gg (step)</option>
+                            <option value="p2">p2 (spinning hop)</option>
+                            <option value="p1m1">p1m1 (sidle)</option>
+                            <option value="p11m">p11m (jump)</option>
+                            <option value="p1">p1 (hop)</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <label for="frieze-repetitions">Repetitions</label>
+                        <input type="range" id="frieze-repetitions" min="3" max="12" value="8">
+                        <span class="value-display" id="frieze-repetitions-value">8</span>
+                    </div>
+                </div>
+
+                <!-- Common Options -->
+                <hr>
+                <div class="control-group">
+                    <label for="complexity">Complexity</label>
+                    <input type="range" id="complexity" min="2" max="15" value="6">
+                    <span class="value-display" id="complexity-value">6</span>
+                </div>
+
+                <div class="control-group">
+                    <label for="palette">Color Palette</label>
+                    <select id="palette">
+                        <option value="random">Random Harmony</option>
+                        <optgroup label="Vibrant">
+                            <option value="vibrant">Vibrant</option>
+                            <option value="neon">Neon</option>
+                            <option value="pop">Pop</option>
+                        </optgroup>
+                        <optgroup label="Warm">
+                            <option value="sunset">Sunset</option>
+                            <option value="autumn">Autumn</option>
+                            <option value="coral">Coral</option>
+                        </optgroup>
+                        <optgroup label="Cool">
+                            <option value="ocean">Ocean</option>
+                            <option value="arctic">Arctic</option>
+                            <option value="twilight">Twilight</option>
+                        </optgroup>
+                        <optgroup label="Nature">
+                            <option value="forest">Forest</option>
+                            <option value="meadow">Meadow</option>
+                            <option value="earth">Earth</option>
+                        </optgroup>
+                        <optgroup label="Elegant">
+                            <option value="berry">Berry</option>
+                            <option value="wine">Wine</option>
+                            <option value="sage">Sage</option>
+                        </optgroup>
+                        <optgroup label="Monochrome">
+                            <option value="mono_blue">Blue</option>
+                            <option value="mono_green">Green</option>
+                            <option value="mono_purple">Purple</option>
+                            <option value="mono_gray">Gray</option>
+                        </optgroup>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label for="seed">Seed</label>
+                    <div class="seed-input">
+                        <input type="number" id="seed" min="0" max="2147483647" value="">
+                        <button id="random-seed" title="Random seed">Dice</button>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button id="random-generate-btn" class="primary">Random</button>
+                    <button id="generate-btn">Regenerate</button>
+                    <button id="download-btn">Download</button>
+                </div>
+
+                <div class="control-group auto-mode">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="auto-mode">
+                        <span>Auto-play</span>
+                    </label>
+                    <div class="interval-control">
+                        <input type="range" id="auto-interval" min="1" max="10" value="3" disabled>
+                        <span class="value-display" id="auto-interval-value">3s</span>
+                    </div>
+                    <button id="fullscreen-btn" class="fullscreen-btn">Fullscreen</button>
+                </div>
+            </div>
+
+            <div class="preview">
+                <div class="preview-container" id="preview-container">
+                    <div class="loading" id="loading">Generating...</div>
+                    <div id="svg-container"></div>
+                    <button class="fs-close-btn" id="fs-close-btn" aria-label="Exit fullscreen">&times;</button>
+                </div>
+                <div class="seed-display">
+                    Seed: <span id="current-seed">-</span>
+                </div>
+            </div>
+
+            <!-- Mobile settings toggle (visible only on mobile) -->
+            <button class="settings-toggle" id="settings-toggle">Settings</button>
+        </main>
+
+        <!-- Mobile controls backdrop -->
+        <div class="controls-backdrop" id="controls-backdrop"></div>
+
+        <footer>
+            <p>Based on mathematical symmetry groups from "The Symmetries of Things"</p>
+        </footer>
+    </div>
+
+    <!-- Core modules (dependency order) -->
+    <script src="core/transform.js"></script>
+    <script src="core/primitives.js"></script>
+    <script src="core/svg-renderer.js"></script>
+
+    <!-- Generators -->
+    <script src="generators/base.js"></script>
+    <script src="generators/rosette.js"></script>
+    <script src="generators/kaleidoscope.js"></script>
+    <script src="generators/wallpaper.js"></script>
+    <script src="generators/frieze.js"></script>
+
+    <!-- WebGL + App -->
+    <script src="kaleidoscope3d.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
