@@ -2,6 +2,9 @@
 // Fully client-side: no server required.
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Apply i18n translations
+    if (typeof applyTranslations === 'function') applyTranslations();
+
     // Elements
     const patternTypeSelect = document.getElementById('pattern-type');
     const generateBtn = document.getElementById('generate-btn');
@@ -20,6 +23,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const settingsToggle = document.getElementById('settings-toggle');
     const controlsPanel = document.querySelector('.controls');
     const controlsBackdrop = document.getElementById('controls-backdrop');
+
+    // Mobile action buttons
+    const mobileRandomBtn = document.getElementById('mobile-random-btn');
+    const mobileDownloadBtn = document.getElementById('mobile-download-btn');
 
     // Pattern-specific option containers
     const optionContainers = {
@@ -98,6 +105,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Download button
     downloadBtn.addEventListener('click', downloadPattern);
+
+    // Mobile action buttons
+    if (mobileRandomBtn) {
+        mobileRandomBtn.addEventListener('click', function() {
+            seedInput.value = '';
+            generatePattern();
+        });
+    }
+    if (mobileDownloadBtn) {
+        mobileDownloadBtn.addEventListener('click', downloadPattern);
+    }
 
     // --- Mobile controls drawer ---
     if (settingsToggle) {
@@ -440,20 +458,40 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // --- PNG download (SVG → Canvas → PNG blob) ---
     function downloadPattern() {
         if (!currentSvgData) {
-            alert('Please generate a pattern first.');
+            alert(typeof T === 'function' ? T('alert_generate_first') : 'Please generate a pattern first.');
             return;
         }
-        const blob = new Blob([currentSvgData], { type: 'image/svg+xml' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `pattern_${currentSeed || 'unknown'}.svg`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
+
+        const exportSize = 1024; // 2x resolution for sharp output
+        const canvas = document.createElement('canvas');
+        canvas.width = exportSize;
+        canvas.height = exportSize;
+        const ctx = canvas.getContext('2d');
+
+        const img = new Image();
+        const svgBlob = new Blob([currentSvgData], { type: 'image/svg+xml' });
+        const url = URL.createObjectURL(svgBlob);
+
+        img.onload = function() {
+            ctx.drawImage(img, 0, 0, exportSize, exportSize);
+            URL.revokeObjectURL(url);
+
+            canvas.toBlob(function(blob) {
+                if (!blob) return;
+                const blobUrl = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = blobUrl;
+                a.download = `pattern_${currentSeed || 'unknown'}.png`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(blobUrl);
+            }, 'image/png');
+        };
+        img.src = url;
     }
 
     // Generate initial pattern

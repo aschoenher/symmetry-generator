@@ -11,34 +11,34 @@
 <body>
     <div class="container">
         <header>
-            <h1>Geometric Pattern Generator</h1>
-            <p class="subtitle">Create mathematical symmetry patterns</p>
+            <h1 data-i18n="title">Geometric Pattern Generator</h1>
+            <p class="subtitle" data-i18n="subtitle">Create mathematical symmetry patterns</p>
         </header>
 
         <main>
             <div class="controls">
                 <div class="control-group">
-                    <label for="pattern-type">Pattern Type</label>
+                    <label for="pattern-type" data-i18n="pattern_type">Pattern Type</label>
                     <select id="pattern-type">
-                        <option value="rosette">Rosette</option>
-                        <option value="kaleidoscope">Kaleidoscope</option>
-                        <option value="wallpaper">Wallpaper</option>
-                        <option value="frieze">Frieze</option>
+                        <option value="rosette" data-i18n="rosette">Rosette</option>
+                        <option value="kaleidoscope" data-i18n="kaleidoscope">Kaleidoscope</option>
+                        <option value="wallpaper" data-i18n="wallpaper">Wallpaper</option>
+                        <option value="frieze" data-i18n="frieze">Frieze</option>
                     </select>
                 </div>
 
                 <!-- Rosette Options -->
                 <div id="rosette-options" class="pattern-options">
                     <div class="control-group">
-                        <label for="rosette-n">Rotational Order (n)</label>
+                        <label for="rosette-n" data-i18n="rotational_order">Rotational Order (n)</label>
                         <input type="range" id="rosette-n" min="2" max="24" value="6">
                         <span class="value-display" id="rosette-n-value">6</span>
                     </div>
                     <div class="control-group">
-                        <label for="rosette-symmetry">Symmetry Type</label>
+                        <label for="rosette-symmetry" data-i18n="symmetry_type">Symmetry Type</label>
                         <select id="rosette-symmetry">
-                            <option value="Dn">Dn (rotation + reflection)</option>
-                            <option value="Cn">Cn (rotation only)</option>
+                            <option value="Dn" data-i18n="dn_desc">Dn (rotation + reflection)</option>
+                            <option value="Cn" data-i18n="cn_desc">Cn (rotation only)</option>
                         </select>
                     </div>
                 </div>
@@ -46,28 +46,28 @@
                 <!-- Kaleidoscope Options -->
                 <div id="kaleidoscope-options" class="pattern-options" style="display: none;">
                     <div class="control-group">
-                        <label for="kaleidoscope-triangle">Triangle Type</label>
+                        <label for="kaleidoscope-triangle" data-i18n="triangle_type">Triangle Type</label>
                         <select id="kaleidoscope-triangle">
-                            <option value="*236">*236 (30-60-90)</option>
-                            <option value="*333">*333 (60-60-60)</option>
-                            <option value="*244">*244 (45-45-90)</option>
-                            <option value="*235">*235 (Icosahedral)</option>
-                            <option value="*234">*234 (Octahedral)</option>
-                            <option value="*237">*237 (Hyperbolic)</option>
+                            <option value="*236" data-i18n="triangle_236">*236 (30-60-90)</option>
+                            <option value="*333" data-i18n="triangle_333">*333 (60-60-60)</option>
+                            <option value="*244" data-i18n="triangle_244">*244 (45-45-90)</option>
+                            <option value="*235" data-i18n="triangle_235">*235 (Icosahedral)</option>
+                            <option value="*234" data-i18n="triangle_234">*234 (Octahedral)</option>
+                            <option value="*237" data-i18n="triangle_237">*237 (Hyperbolic)</option>
                         </select>
                     </div>
                     <div class="control-group">
-                        <label for="kaleidoscope-iterations">Iterations</label>
+                        <label for="kaleidoscope-iterations" data-i18n="iterations">Iterations</label>
                         <input type="range" id="kaleidoscope-iterations" min="1" max="6" value="4">
                         <span class="value-display" id="kaleidoscope-iterations-value">4</span>
                     </div>
                     <div class="control-group">
                         <label class="checkbox-label">
                             <input type="checkbox" id="kaleidoscope-animate">
-                            <span>3D Tunnel Effect</span>
+                            <span data-i18n="tunnel_3d">3D Tunnel Effect</span>
                         </label>
                         <div class="interval-control" id="kaleidoscope-speed-control">
-                            <label>Speed</label>
+                            <label data-i18n="speed">Speed</label>
                             <input type="range" id="kaleidoscope-speed" min="1" max="10" value="3" step="0.5">
                             <span class="value-display" id="kaleidoscope-speed-value">3</span>
                         </div>
@@ -77,21 +77,21 @@
                 <!-- Wallpaper Options -->
                 <div id="wallpaper-options" class="pattern-options" style="display: none;">
                     <div class="control-group">
-                        <label for="wallpaper-group">Wallpaper Group</label>
+                        <label for="wallpaper-group" data-i18n="wallpaper_group">Wallpaper Group</label>
                         <select id="wallpaper-group">
-                            <optgroup label="Hexagonal">
+                            <optgroup label="Hexagonal" data-i18n-label="group_hexagonal">
                                 <option value="p6m" selected>p6m</option>
                                 <option value="p6">p6</option>
                                 <option value="p3m1">p3m1</option>
                                 <option value="p31m">p31m</option>
                                 <option value="p3">p3</option>
                             </optgroup>
-                            <optgroup label="Square">
+                            <optgroup label="Square" data-i18n-label="group_square">
                                 <option value="p4m">p4m</option>
                                 <option value="p4g">p4g</option>
                                 <option value="p4">p4</option>
                             </optgroup>
-                            <optgroup label="Rectangular">
+                            <optgroup label="Rectangular" data-i18n-label="group_rectangular">
                                 <option value="pmm">pmm</option>
                                 <option value="pmg">pmg</option>
                                 <option value="pgg">pgg</option>
@@ -100,14 +100,14 @@
                                 <option value="pg">pg</option>
                                 <option value="cm">cm</option>
                             </optgroup>
-                            <optgroup label="Oblique">
+                            <optgroup label="Oblique" data-i18n-label="group_oblique">
                                 <option value="p2">p2</option>
                                 <option value="p1">p1</option>
                             </optgroup>
                         </select>
                     </div>
                     <div class="control-group">
-                        <label for="wallpaper-repeat">Repetitions</label>
+                        <label for="wallpaper-repeat" data-i18n="repetitions">Repetitions</label>
                         <input type="range" id="wallpaper-repeat" min="2" max="8" value="4">
                         <span class="value-display" id="wallpaper-repeat-value">4x4</span>
                     </div>
@@ -116,19 +116,19 @@
                 <!-- Frieze Options -->
                 <div id="frieze-options" class="pattern-options" style="display: none;">
                     <div class="control-group">
-                        <label for="frieze-group">Frieze Group</label>
+                        <label for="frieze-group" data-i18n="pattern_type">Frieze Group</label>
                         <select id="frieze-group">
-                            <option value="p2mm">p2mm (spinning sidle)</option>
-                            <option value="p2mg">p2mg (spinning jump)</option>
-                            <option value="p2gg">p2gg (step)</option>
-                            <option value="p2">p2 (spinning hop)</option>
-                            <option value="p1m1">p1m1 (sidle)</option>
-                            <option value="p11m">p11m (jump)</option>
-                            <option value="p1">p1 (hop)</option>
+                            <option value="p2mm" data-i18n="frieze_p2mm">p2mm (spinning sidle)</option>
+                            <option value="p2mg" data-i18n="frieze_p2mg">p2mg (spinning jump)</option>
+                            <option value="p2gg" data-i18n="frieze_p2gg">p2gg (step)</option>
+                            <option value="p2" data-i18n="frieze_p2">p2 (spinning hop)</option>
+                            <option value="p1m1" data-i18n="frieze_p1m1">p1m1 (sidle)</option>
+                            <option value="p11m" data-i18n="frieze_p11m">p11m (jump)</option>
+                            <option value="p1" data-i18n="frieze_p1">p1 (hop)</option>
                         </select>
                     </div>
                     <div class="control-group">
-                        <label for="frieze-repetitions">Repetitions</label>
+                        <label for="frieze-repetitions" data-i18n="repetitions">Repetitions</label>
                         <input type="range" id="frieze-repetitions" min="3" max="12" value="8">
                         <span class="value-display" id="frieze-repetitions-value">8</span>
                     </div>
@@ -137,98 +137,107 @@
                 <!-- Common Options -->
                 <hr>
                 <div class="control-group">
-                    <label for="complexity">Complexity</label>
+                    <label for="complexity" data-i18n="complexity">Complexity</label>
                     <input type="range" id="complexity" min="2" max="15" value="6">
                     <span class="value-display" id="complexity-value">6</span>
                 </div>
 
                 <div class="control-group">
-                    <label for="palette">Color Palette</label>
+                    <label for="palette" data-i18n="color_palette">Color Palette</label>
                     <select id="palette">
-                        <option value="random">Random Harmony</option>
-                        <optgroup label="Vibrant">
-                            <option value="vibrant">Vibrant</option>
-                            <option value="neon">Neon</option>
-                            <option value="pop">Pop</option>
+                        <option value="random" data-i18n="random_harmony">Random Harmony</option>
+                        <optgroup label="Vibrant" data-i18n-label="pal_vibrant">
+                            <option value="vibrant" data-i18n="vibrant">Vibrant</option>
+                            <option value="neon" data-i18n="neon">Neon</option>
+                            <option value="pop" data-i18n="pop">Pop</option>
                         </optgroup>
-                        <optgroup label="Warm">
-                            <option value="sunset">Sunset</option>
-                            <option value="autumn">Autumn</option>
-                            <option value="coral">Coral</option>
+                        <optgroup label="Warm" data-i18n-label="pal_warm">
+                            <option value="sunset" data-i18n="sunset">Sunset</option>
+                            <option value="autumn" data-i18n="autumn">Autumn</option>
+                            <option value="coral" data-i18n="coral">Coral</option>
                         </optgroup>
-                        <optgroup label="Cool">
-                            <option value="ocean">Ocean</option>
-                            <option value="arctic">Arctic</option>
-                            <option value="twilight">Twilight</option>
+                        <optgroup label="Cool" data-i18n-label="pal_cool">
+                            <option value="ocean" data-i18n="ocean">Ocean</option>
+                            <option value="arctic" data-i18n="arctic">Arctic</option>
+                            <option value="twilight" data-i18n="twilight">Twilight</option>
                         </optgroup>
-                        <optgroup label="Nature">
-                            <option value="forest">Forest</option>
-                            <option value="meadow">Meadow</option>
-                            <option value="earth">Earth</option>
+                        <optgroup label="Nature" data-i18n-label="pal_nature">
+                            <option value="forest" data-i18n="forest">Forest</option>
+                            <option value="meadow" data-i18n="meadow">Meadow</option>
+                            <option value="earth" data-i18n="earth">Earth</option>
                         </optgroup>
-                        <optgroup label="Elegant">
-                            <option value="berry">Berry</option>
-                            <option value="wine">Wine</option>
-                            <option value="sage">Sage</option>
+                        <optgroup label="Elegant" data-i18n-label="pal_elegant">
+                            <option value="berry" data-i18n="berry">Berry</option>
+                            <option value="wine" data-i18n="wine">Wine</option>
+                            <option value="sage" data-i18n="sage">Sage</option>
                         </optgroup>
-                        <optgroup label="Monochrome">
-                            <option value="mono_blue">Blue</option>
-                            <option value="mono_green">Green</option>
-                            <option value="mono_purple">Purple</option>
-                            <option value="mono_gray">Gray</option>
+                        <optgroup label="Monochrome" data-i18n-label="pal_monochrome">
+                            <option value="mono_blue" data-i18n="mono_blue">Blue</option>
+                            <option value="mono_green" data-i18n="mono_green">Green</option>
+                            <option value="mono_purple" data-i18n="mono_purple">Purple</option>
+                            <option value="mono_gray" data-i18n="mono_gray">Gray</option>
                         </optgroup>
                     </select>
                 </div>
 
                 <div class="control-group">
-                    <label for="seed">Seed</label>
+                    <label for="seed" data-i18n="seed">Seed</label>
                     <div class="seed-input">
                         <input type="number" id="seed" min="0" max="2147483647" value="">
-                        <button id="random-seed" title="Random seed">Dice</button>
+                        <button id="random-seed" data-i18n-title="dice" data-i18n="dice">Dice</button>
                     </div>
                 </div>
 
                 <div class="button-group">
-                    <button id="random-generate-btn" class="primary">Random</button>
-                    <button id="generate-btn">Regenerate</button>
-                    <button id="download-btn">Download</button>
+                    <button id="random-generate-btn" class="primary" data-i18n="btn_random">Random</button>
+                    <button id="generate-btn" data-i18n="btn_regenerate">Regenerate</button>
+                    <button id="download-btn" data-i18n="btn_download">Download PNG</button>
                 </div>
 
                 <div class="control-group auto-mode">
                     <label class="checkbox-label">
                         <input type="checkbox" id="auto-mode">
-                        <span>Auto-play</span>
+                        <span data-i18n="auto_play">Auto-play</span>
                     </label>
                     <div class="interval-control">
                         <input type="range" id="auto-interval" min="1" max="10" value="3" disabled>
                         <span class="value-display" id="auto-interval-value">3s</span>
                     </div>
-                    <button id="fullscreen-btn" class="fullscreen-btn">Fullscreen</button>
+                    <button id="fullscreen-btn" class="fullscreen-btn" data-i18n="fullscreen">Fullscreen</button>
                 </div>
             </div>
 
             <div class="preview">
                 <div class="preview-container" id="preview-container">
-                    <div class="loading" id="loading">Generating...</div>
+                    <div class="loading" id="loading" data-i18n="generating">Generating...</div>
                     <div id="svg-container"></div>
                     <button class="fs-close-btn" id="fs-close-btn" aria-label="Exit fullscreen">&times;</button>
                 </div>
                 <div class="seed-display">
-                    Seed: <span id="current-seed">-</span>
+                    <span data-i18n="seed_label">Seed:</span> <span id="current-seed">-</span>
                 </div>
             </div>
 
+            <!-- Mobile action buttons (sticky at bottom) -->
+            <div class="mobile-actions" id="mobile-actions">
+                <button id="mobile-random-btn" class="primary" data-i18n="btn_random">Random</button>
+                <button id="mobile-download-btn" data-i18n="btn_download">Download PNG</button>
+            </div>
+
             <!-- Mobile settings toggle (visible only on mobile) -->
-            <button class="settings-toggle" id="settings-toggle">Settings</button>
+            <button class="settings-toggle" id="settings-toggle" data-i18n="settings">Settings</button>
         </main>
 
         <!-- Mobile controls backdrop -->
         <div class="controls-backdrop" id="controls-backdrop"></div>
 
         <footer>
-            <p>Based on mathematical symmetry groups from "The Symmetries of Things"</p>
+            <p data-i18n="footer">Based on mathematical symmetry groups from "The Symmetries of Things"</p>
         </footer>
     </div>
+
+    <!-- i18n (before app.js) -->
+    <script src="i18n.js"></script>
 
     <!-- Core modules (dependency order) -->
     <script src="core/transform.js"></script>
